@@ -1,7 +1,5 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { Application } from './components/Application';
+import { Application } from './components/application';
 import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
