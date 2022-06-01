@@ -1,3 +1,3 @@
 import {Entity} from "../core/entity";
 
-export interface OntologyAttribute extends Entity {}
+export class OntologyAttribute extends Entity {}

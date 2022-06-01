@@ -7,6 +7,8 @@ import {SetIri} from "./set-iri";
 import {NkodDatasetAdapter} from "../nkod/nkod-dataset-adapter";
 import {httpFetch} from "../io/fetch/fetch-browser";
 import {useDataset} from "../processing/use-dataset";
+import {SgovOntologyAdapter} from "../nkod/sgov-ontology-adapter";
+import {useFetchedGraphFromDataset} from "../processing/use-fetched-graph-from-dataset";
 
 // Process URL parameters
 const urlParams = new URLSearchParams(window.location.search);
@@ -14,9 +16,13 @@ const datasetIri = urlParams.get("iri");
 
 // Setup adapters
 const nkodAdapter = new NkodDatasetAdapter("https://dev.nkod.opendata.cz/sparql", httpFetch);
+const sgovAdapter = new SgovOntologyAdapter("https://xn--slovnk-7va.gov.cz/sparql", httpFetch);
 
 export const Application: FC = () => {
   const [dataset, datasetLoading] = useDataset(datasetIri, nkodAdapter);
+  const [graph, graphLoading] = useFetchedGraphFromDataset(dataset ?? undefined, sgovAdapter);
+
+  if (graph) console.log(graph);
 
   return <>
     <div>
@@ -40,6 +46,6 @@ export const Application: FC = () => {
         }
       </Container>
     </div>
-    {datasetIri === null || <Graph />}
+    {graph && <Graph graph={graph} />}
   </>;
 }

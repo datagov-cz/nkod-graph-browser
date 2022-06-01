@@ -6,29 +6,11 @@ import {DatasetQuery} from "./dataset-query";
 import {RdfSourceWrap} from "../core/rdf";
 import {rdfObjectsToLanguageString} from "../io/rdf/rdf-objects-to-language-string";
 import {Publisher} from "../dataset/publisher";
-
-const DCAT = {
-  Dataset: "http://www.w3.org/ns/dcat#Dataset",
-  theme: "http://www.w3.org/ns/dcat#theme",
-}
-
-const DCTERMS = {
-  title: "http://purl.org/dc/terms/title",
-  description: "http://purl.org/dc/terms/description",
-  publisher: "http://purl.org/dc/terms/publisher",
-}
-
-const FOAF = {
-  name: "http://xmlns.com/foaf/0.1/name",
-}
-
-const RDF = {
-  type: "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-};
+import {DCAT, DCTERMS, FOAF, RDF} from "../utils/vocabularies";
 
 export class NkodDatasetAdapter implements DatasetAdapter {
-  private sparqlEndpoint: string;
-  private httpFetch: HttpFetch;
+  private readonly sparqlEndpoint: string;
+  private readonly httpFetch: HttpFetch;
 
   constructor(sparqlEndpoint: string, httpFetch: HttpFetch) {
     this.sparqlEndpoint = sparqlEndpoint;
@@ -43,8 +25,6 @@ export class NkodDatasetAdapter implements DatasetAdapter {
     );
 
     await source.query();
-
-    console.log("source", source);
 
     const rdfDataset = RdfSourceWrap.forIri(iri, source);
 

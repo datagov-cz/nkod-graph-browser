@@ -3,24 +3,17 @@ import {OntologyAdapter} from "../ontology/ontology-adapter";
 import {OntologyGraph} from "../ontology/ontology-graph";
 
 export async function fetchGraph(dataset: Dataset, ontologyAdapters: OntologyAdapter[]): Promise<OntologyGraph> {
-  const graph = new OntologyGraph();
+  const result = new OntologyGraph();
 
-  for (const relatedClass of dataset.relatedClasses) {
-    for (const adapter of ontologyAdapters) {
-      const cls = await adapter.getClass(relatedClass);
-      if (cls) {
-        const surrounding = await adapter.getClassAssociations(relatedClass);
-        if (!surrounding) {
-          console.error("Null returned for associations query for existing class");
-          break;
-        }
-        graph.classes[relatedClass] = cls;
-        for (const association of surrounding) {
-          graph.associations[association.iri] = association;
-        }
-      }
+  for (const adapter of ontologyAdapters) {
+    try {
+      const graph = await adapter.getGraphForResources(dataset.relatedClasses);
+      result.classes = {...result.classes, ...graph.classes};
+      result.associations = {...result.associations, ...graph.associations};
+    } catch (e) {
+      console.error(e);
     }
   }
 
-  return graph;
+  return result;
 }

@@ -83,12 +83,15 @@ export function createNodesAndEdges() {
     for (let i = 0; i < 8; i++) {
         const degrees = i * (360 / 8);
         const radians = degrees * (Math.PI / 180);
-        const x = 250 * Math.cos(radians) + center.x;
-        const y = 250 * Math.sin(radians) + center.y;
+        const x = 350 * Math.cos(radians) + center.x;
+        const y = 350 * Math.sin(radians) + center.y;
 
-        nodes.push({ id: `${i}`, data: { label: 'Source' }, position: { x, y }, type: "classNode" });
+        nodes.push({ id: `${i}`, data: {
+            name: {"cs": 'Source'}, attributes: [{name: {"cs": 'Age'}}, {name: {"cs": 'Sex'}}], iri: "sdf"
+            }, position: { x, y }, type: "classNode" });
 
         edges.push({
+            markerStart: "markerCircle",
             id: `edge-${i}`,
             target: 'target',
             source: `${i}`,

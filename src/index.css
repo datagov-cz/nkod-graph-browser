@@ -16,3 +16,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.react-flow__edge-path {
+  stroke: black !important;
+}
+
+#extendsArrow polyline {
+  fill: white;
+  stroke: black;
+}
+
+#associationArrow polyline {
+  stroke: black;
+  fill: none;
+}
