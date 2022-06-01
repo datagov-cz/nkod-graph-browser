@@ -7,6 +7,7 @@ import "./marker-symbols";
 import ReactDOM from "react-dom/client";
 import {OntologyGraph} from "../ontology/ontology-graph";
 import {reactFlowAdapter} from "../processing/react-flow-adapter";
+import {layout} from "../processing/layout";
 
 const edgeTypes = {
     floating: FloatingEdge,
@@ -21,7 +22,7 @@ export const Graph: FC<{
     const [edges, setEdges, onEdgesChange] = useEdgesState([]);
     
     useEffect(() => {
-      const {nodes, edges} = reactFlowAdapter(graph);
+      const {nodes, edges} = layout(reactFlowAdapter(graph));
       setNodes(nodes);
       setEdges(edges);
     }, [graph, setEdges, setNodes]);

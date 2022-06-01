@@ -16,8 +16,8 @@ export function reactFlowAdapter(ontologyGraph: OntologyGraph): {
   const nodes = classes.map((cls, i) => ({
     id: cls.iri,
     position: {
-      x: 100*classes.length*Math.sin(i/classes.length * 2 * Math.PI),
-      y: 100*classes.length*Math.cos(i/classes.length * 2 * Math.PI),
+      x: 100*i,//classes.length*Math.sin(i/classes.length * 4*2 * Math.PI),
+      y: 0,//100*classes.length*Math.cos(i/classes.length * 4*2 * Math.PI),
     },
     data: cls,
     type: "classNode",
@@ -51,8 +51,10 @@ export function reactFlowAdapter(ontologyGraph: OntologyGraph): {
     edge.data?.push(association)
   }
 
+  const edges = [...ext, ...Object.values(associations)];
+
   return {
     nodes,
-    edges: [...ext, ...Object.values(associations)],
-  }
+    edges,
+  };
 }

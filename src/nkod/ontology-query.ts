@@ -7,7 +7,7 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 CONSTRUCT {
   ?node a ?type ;
     dcterms:title ?label ;
-    dcterms:definition ?definition ;
+    dcterms:description ?definition ;
     rdfs:subClassOf ?ancestor ;
     rdfs:domain ?domain ;
     rdfs:range ?range .
@@ -67,6 +67,7 @@ CONSTRUCT {
 
   OPTIONAL {?node skos:prefLabel ?label}
   OPTIONAL {?node skos:definition ?definition}
+  OPTIONAL {?node skos:scopeNote ?definition}
 
   FILTER (?entity IN %IRIs%)
 }

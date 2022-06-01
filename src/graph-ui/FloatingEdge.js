@@ -22,8 +22,9 @@ function FloatingEdge({ id, source, target, markerEnd, markerStart, style, data 
                 <EdgeText
                     x={(2*sx+tx)/3}
                     y={(2*sy+ty)/3}
-                    label={data?.map(association => association.name?.["cs"]).join(", ")}
-                    labelStyle={{ fill: 'black' }}
+                    label={<>
+                        {data?.map((association, index) => <tspan x="0" dy={data.length === 1 ? null : (index ? "1.2em" : "-0.3em")}>{association.name?.["cs"]}</tspan>)}
+                    </>}
                 />
             }
         </g>

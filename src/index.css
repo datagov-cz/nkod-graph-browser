@@ -22,11 +22,30 @@ code {
 }
 
 #extendsArrow polyline {
-  fill: white;
-  stroke: black;
+  fill: var(--color-background);
+  stroke: var(--color-text-default);
 }
 
 #associationArrow polyline {
-  stroke: black;
+  stroke: var(--color-text-default);
   fill: none;
 }
+
+.react-flow__edge-textbg {
+  fill: var(--color-background) !important;
+}
+
+.react-flow__edge-text {
+  fill: var(--color-text-default) !important;
+}
+
+.react-flow__edge-path {
+  stroke: var(--color-text-default) !important;
+}
+
+.tooltip-inner {
+  max-width: 350px !important;
+  /* If max-width does not work, try using width instead */
+  width: 350px !important;
+}
+

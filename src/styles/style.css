@@ -1,0 +1,242 @@
+/* General page style. */
+
+body {
+    color: var(--color-text-default);
+}
+
+body, .card, .card-body, .dropdown-menu, .list-group-item {
+    background-color: var(--color-background);
+}
+
+.list-group-item {
+    color: var(--color-text-default);
+}
+
+hr, .list-group-item, .card {
+    border-color: var(--color-border);
+}
+
+.footer {
+    background-color: var(--color-background-footer);
+}
+
+.badge-info, .bg-info, a.badge-info.btn:hover {
+    background-color: var(--color-base) !important;
+    color: var(--color-text-inverted) !important;
+}
+
+.label {
+    font-size: 80%;
+}
+
+input.form-control {
+    background-color: var(--color-background-footer);
+    color: var(--color-text-default);
+}
+
+.exceptional-publisher-icon {
+    color: #F9BC38;
+}
+
+a {
+    color: var(--color-text-accent);
+}
+
+a:hover {
+    color: var(--color-text-accent-inverted);
+}
+
+a.dropdown-item {
+    color: var(--color-text-default);
+    background-color: var(--color-background);
+}
+
+a.dropdown-item:hover {
+    color: var(--color-text-accent-inverted);
+    background-color: var(--color-background);
+}
+
+.btn-primary {
+    background-color: var(--color-text-accent);
+    border-color: var(--color-text-inverted);
+    color: var(--color-text-inverted);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-text-inverted);
+    border-color: var(--color-text-inverted);
+    color: var(--color-text-accent);
+}
+
+.btn-secondary {
+    background-color: var(--color-text-inverted);
+    border-color: var(--color-text-accent);
+    color: var(--color-text-accent);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-text-accent);
+    border-color: var(--color-text-inverted);
+    color: var(--color-text-inverted);
+}
+
+.page-link {
+    color: var(--color-text-accent);
+}
+
+.page-item.active .page-link {
+    background-color: var(--color-text-accent);
+}
+
+a:hover, nav a:hover, .card-link:hover, .page-item.active a.page-link {
+    text-decoration: underline;
+}
+
+@media (max-width: 576px) {
+
+    .collapse-sm-down {
+        display: none;
+    }
+
+    .collapse-sm-down.show {
+        display: block;
+    }
+
+}
+
+/* Indeterminate-loader */
+
+.indeterminate-loader {
+    width: 100%;
+    height: 5px;
+    background-color: var(--color-background);
+    overflow: hidden;
+}
+
+.indeterminate-loader .progress {
+    background-color: var(--color-text-accent);
+    height: 5px;
+    width: 0;
+    -webkit-animation: indeterminate-loader-animation 3.0s infinite 0.7s linear;
+    animation: indeterminate-loader-animation 3.0s infinite 0.7s linear;
+}
+
+@keyframes indeterminate-loader-animation {
+    0% {
+        margin-left: -5%;
+        width: 5%;
+    }
+    75% {
+        width: 50%;
+        margin-left: 50%;
+    }
+    100% {
+        margin-left: 100%;
+    }
+}
+
+@-webkit-keyframes indeterminate-loader-animation {
+    0% {
+        margin-left: -5%;
+        width: 5%;
+    }
+    75% {
+        width: 50%;
+        margin-left: 50%;
+    }
+    100% {
+        margin-left: 100%;
+    }
+}
+
+/* Navigation bar */
+
+.navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav .nav-link:focus {
+    color: var(--color-text-accent);
+}
+
+.navbar-light a.dropdown-item:hover {
+    background-color: var(--color-background-footer);
+}
+
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link.active, .navbar-light a.dropdown-item:hover {
+    color: var(--color-text-accent-inverted);    
+}
+
+.navbar-light a.dropdown-item {
+    color: var(--color-text-accent);
+    background-color: var(--color-background);
+}
+
+.navbar-light a.dropdown-item.active, .dropdown-item:active, .navbar-light .navbar-nav .nav-link.active {
+    background-color: var(--color-background);
+    text-decoration: none;
+}
+
+/* Filter */
+
+.filter-button {
+    cursor: pointer;
+
+}
+
+.filter-button.active {
+    background-color: var(--color-text-accent);
+    border-color: var(--color-text-inverted);
+    color: var(--color-text-inverted);
+    cursor: pointer;
+}
+
+.filter-button:focus {
+    outline: 0;
+    background-color: var(--color-background);
+}
+
+/* Remove min width from navigation bar. */
+
+.language-drop-down {
+    padding: 0.1rem;
+    min-width: 2rem;
+    width: 3rem;
+    height: 3rem;
+}
+
+.language-drop-down button {
+    padding: 0;
+}
+
+dd {
+    overflow-wrap: break-word;
+}
+
+/* Icons size. */
+
+.material-icons.md-18 {
+    font-size: 18px;
+}
+
+.material-icons.md-24 {
+    font-size: 24px;
+}
+
+.material-icons.md-36 {
+    font-size: 36px;
+}
+
+.material-icons.md-48 {
+    font-size: 48px;
+}
+
+.material-icons.center {
+    vertical-align: middle
+}
+
+/* Fixes to bootstrap. */
+
+.list-group-flush .list-group-item:first-child {
+    border-top-width: 1px
+}
+
+a {
+    text-decoration: none;
+}
