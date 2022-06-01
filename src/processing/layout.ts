@@ -52,7 +52,6 @@ function BFS({nodes, edges}: NodesEdges) {
 
 export function layout({nodes, edges}: NodesEdges): NodesEdges {
   BFS({nodes, edges});
-  console.table(nodes.map(n => [n.position.x, n.id]));
 
   const colaNodes = nodes.map((node, index) => ({ref: node, ...node.position, index}));
   const colaNodesDictionary = Object.fromEntries(colaNodes.map(n => [n.ref.id, n]));

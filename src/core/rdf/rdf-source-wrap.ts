@@ -86,7 +86,7 @@ export class RdfSourceWrap {
 
   async literal(predicate: string): Promise<RdfObject | null> {
     const values = await this.property(predicate);
-    if (values.length == 0) {
+    if (values.length === 0) {
       return null;
     }
     for (const value of values) {

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 
 const root = ReactDOM.createRoot(
-  document.body as HTMLElement
+  document.getElementById("container") as HTMLElement
 );
 root.render(
   <React.StrictMode>

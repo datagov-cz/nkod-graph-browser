@@ -3,8 +3,11 @@ import {Handle, Position} from 'react-flow-renderer';
 import {Card} from "reactstrap";
 import {OntologyClass} from "../ontology/ontology-class";
 import {Attribute} from "./attribute";
+import {useTranslate} from "../utils/use-translate";
 
 export const ClassNode: FC<{data: OntologyClass}>= ({ data }) => {
+  const tr = useTranslate();
+
   return (
     <Card style={{maxWidth: "8cm"}}>
       {/* Handles are needed for edges to work properly*/}
@@ -12,8 +15,8 @@ export const ClassNode: FC<{data: OntologyClass}>= ({ data }) => {
       <Handle type="source" position={Position.Bottom} style={{display: "none"}} />
 
       <ul className="list-group list-group-flush">
-        <li className="list-group-item text-center" title={data.description?.["cs"]}>
-          <strong>{data.name?.["cs"]}</strong>
+        <li className="list-group-item text-center" title={tr(data.description)}>
+          <strong>{tr(data.name)}</strong>
           <a
             href={data.iri}
             target="_blank"

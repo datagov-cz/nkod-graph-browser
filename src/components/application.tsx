@@ -1,13 +1,11 @@
 import {FC} from "react";
-import {Container, Navbar, NavbarBrand,} from "reactstrap";
+import {Container, Nav, Navbar, NavbarBrand,} from "reactstrap";
 import {DatasetHeader} from "./dataset-header";
 import "bootstrap/dist/js/bootstrap";
-
 import "bootstrap/dist/css/bootstrap.css";
 import "../styles/style.css";
 import "../styles/style-mode-default.css";
 import "../styles/style-mode-dark.css";
-
 import '../index.css';
 import {Graph} from "../graph-ui/graph";
 import {SetIri} from "./set-iri";
@@ -16,6 +14,8 @@ import {httpFetch} from "../io/fetch/fetch-browser";
 import {useDataset} from "../processing/use-dataset";
 import {SgovOntologyAdapter} from "../nkod/sgov-ontology-adapter";
 import {useFetchedGraphFromDataset} from "../processing/use-fetched-graph-from-dataset";
+import LanguageSelector from "./language-selector";
+import {useTranslate} from "../utils/use-translate";
 
 // Process URL parameters
 const urlParams = new URLSearchParams(window.location.search);
@@ -41,6 +41,9 @@ export const Application: FC = () => {
             id="sdf"
           />
         </NavbarBrand>
+        <Nav className="ms-auto" navbar>
+          <LanguageSelector/>
+        </Nav>
       </Navbar>
       <Container>
         {!datasetIri ?

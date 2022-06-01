@@ -79,6 +79,41 @@ export class SgovOntologyAdapter implements OntologyAdapter {
       graph.associations[association.iri] = association;
     }
 
+    // Garbage collect nodes that are parents and are too high to contain relevant info
+    const relevantNodes = new Set<OntologyClass>();
+    function setDescendantsRelevant(ofClass: OntologyClass) {
+      if (relevantNodes.has(ofClass)) {
+        return;
+      }
+      relevantNodes.add(ofClass);
+      for (const cls of Object.values(graph.classes)) {
+        if (cls.extends.includes(ofClass.iri)) {
+          setDescendantsRelevant(cls);
+        }
+      }
+    }
+    for (const iri of iris) {
+      const cls = graph.classes[iri];
+      if (cls) {
+        setDescendantsRelevant(cls);
+      }
+    }
+    for (const association of Object.values(graph.associations)) {
+      const d = graph.classes[association.ends[0]];
+      const r = graph.classes[association.ends[1]];
+
+      if (d) {
+        setDescendantsRelevant(d);
+      }
+
+      if (r) {
+        setDescendantsRelevant(r);
+      }
+    }
+    // Delete all non-relevant classes
+    graph.classes = Object.fromEntries(Object.entries(graph.classes).filter(([,cls]) => relevantNodes.has(cls)));
+
+
     return graph;
   }
 }

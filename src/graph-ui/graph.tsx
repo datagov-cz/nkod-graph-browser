@@ -1,7 +1,6 @@
 import {FC, useEffect, useMemo} from "react";
-import ReactFlow, {ConnectionLineComponent, EdgeTypes, useEdgesState, useNodesState} from 'react-flow-renderer';
-import FloatingEdge from './FloatingEdge.js';
-import FloatingConnectionLine from './FloatingConnectionLine.js';
+import ReactFlow, {EdgeTypes, useEdgesState, useNodesState} from 'react-flow-renderer';
+import FloatingEdge from './FloatingEdge';
 import {ClassNode} from "./class-node";
 import "./marker-symbols";
 import ReactDOM from "react-dom/client";
@@ -54,7 +53,6 @@ export const Graph: FC<{
             onEdgesChange={onEdgesChange}
             fitView
             edgeTypes={edgeTypes}
-            connectionLineComponent={FloatingConnectionLine as ConnectionLineComponent}
             nodeTypes={nodeTypes}
           >
           </ReactFlow>
