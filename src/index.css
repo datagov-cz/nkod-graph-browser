@@ -43,9 +43,28 @@ code {
   stroke: var(--color-text-default) !important;
 }
 
+.edge-node {
+  background: var(--color-background);
+  text-align: center;
+}
+
 .tooltip-inner {
   max-width: 350px !important;
   /* If max-width does not work, try using width instead */
   width: 350px !important;
+}
+
+.attribute-link, .association-link {
+  transition: opacity 0.2s ease-in-out;
+  opacity: 0;
+}
+
+.attribute-row:hover .attribute-link, .association-row:hover .association-link {
+  opacity: 1;
+}
+
+.attribute-text {
+  margin-left: 1rem;
+  text-indent: -1rem;
 }
 

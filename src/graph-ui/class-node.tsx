@@ -4,9 +4,11 @@ import {Card} from "reactstrap";
 import {OntologyClass} from "../ontology/ontology-class";
 import {Attribute} from "./attribute";
 import {useTranslate} from "../utils/use-translate";
+import {useShowItOntologyLink} from "../utils/use-show-it-ontology-link";
 
 export const ClassNode: FC<{data: OntologyClass}>= ({ data }) => {
   const tr = useTranslate();
+  const link = useShowItOntologyLink();
 
   return (
     <Card style={{maxWidth: "8cm"}}>
@@ -18,7 +20,7 @@ export const ClassNode: FC<{data: OntologyClass}>= ({ data }) => {
         <li className="list-group-item text-center" title={tr(data.description)}>
           <strong>{tr(data.name)}</strong>
           <a
-            href={data.iri}
+            href={link(data.iri)}
             target="_blank"
             rel="noopener noreferrer"
           >

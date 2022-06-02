@@ -1,6 +1,6 @@
 import {FC, useEffect, useMemo} from "react";
 import ReactFlow, {EdgeTypes, useEdgesState, useNodesState} from 'react-flow-renderer';
-import FloatingEdge from './FloatingEdge';
+import AssociationExtensionEdge from './association-extension-edge';
 import {ClassNode} from "./class-node";
 import "./marker-symbols";
 import ReactDOM from "react-dom/client";
@@ -9,7 +9,7 @@ import {reactFlowAdapter} from "../processing/react-flow-adapter";
 import {layout} from "../processing/layout";
 
 const edgeTypes = {
-    floating: FloatingEdge,
+    floating: AssociationExtensionEdge,
 } as EdgeTypes;
 
 export const Graph: FC<{

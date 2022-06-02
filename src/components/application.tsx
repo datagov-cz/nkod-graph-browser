@@ -15,15 +15,14 @@ import {useDataset} from "../processing/use-dataset";
 import {SgovOntologyAdapter} from "../nkod/sgov-ontology-adapter";
 import {useFetchedGraphFromDataset} from "../processing/use-fetched-graph-from-dataset";
 import LanguageSelector from "./language-selector";
-import {useTranslate} from "../utils/use-translate";
 
-// Process URL parameters
+// Process URL parameters and do simple routing
 const urlParams = new URLSearchParams(window.location.search);
 const datasetIri = urlParams.get("iri");
 
 // Setup adapters
-const nkodAdapter = new NkodDatasetAdapter("https://dev.nkod.opendata.cz/sparql", httpFetch);
-const sgovAdapter = new SgovOntologyAdapter("https://xn--slovnk-7va.gov.cz/sparql", httpFetch);
+const nkodAdapter = new NkodDatasetAdapter(process.env.REACT_APP_DATASETS_SPARQL_URL, httpFetch);
+const sgovAdapter = new SgovOntologyAdapter(process.env.REACT_APP_SGOV_SPARQL_URL, httpFetch);
 
 export const Application: FC = () => {
   const [dataset] = useDataset(datasetIri, nkodAdapter);
@@ -37,7 +36,7 @@ export const Application: FC = () => {
             width="174" height="30"
             alt={"sdf"}
             className="d-inline-block align-top"
-            src="https://dev.nkod.opendata.cz/assets/images/opendata-logo.png"
+            src="logo.png"
             id="sdf"
           />
         </NavbarBrand>
